@@ -1,7 +1,10 @@
 const router = require("express").Router();
-const articleRoutes = require("./articles");
+const articlesController = require("../../controllers/articlesController");
 
-// Book routes
-router.use("/articles", articleRoutes);
+router
+  .route("/saved")
+  .get(articlesController.findAll)
+  .post(articlesController.create)
+  .delete(articlesController.remove);
 
 module.exports = router;
